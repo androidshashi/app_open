@@ -4,7 +4,6 @@ import 'package:app_open/src/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       ///Run after 3 seconds
       Timer(const Duration(seconds: 1), () {
         Get.off(
-          () => const HomeScreen(),
+          () =>  HomeScreen(),
           transition: Transition.leftToRightWithFade,
         );
       });

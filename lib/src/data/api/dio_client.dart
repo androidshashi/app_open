@@ -120,7 +120,7 @@ class Endpoints {
   Endpoints._();
 
   //baseUrl
-  static const String baseUrl = "http://103.67.236.46:1010/fas-api/";
+  static const String baseUrl = "https://appopen.me/api/";
 
   // receiveTimeout
   static const int receiveTimeout = 120 * 1000; // 120 sec
@@ -129,8 +129,5 @@ class Endpoints {
   static const int connectionTimeout = 120 * 1000; // 120 sec
 
   // Auth Endpoints
-  static const String login = "login";
-  static const String logout = "logout";
-  static const String resetPassword = "forgot";
-  static const String forgotPassword = "reset_password";
+  static const String createShort = "createShort";
 }

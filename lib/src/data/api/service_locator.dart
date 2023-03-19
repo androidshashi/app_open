@@ -1,7 +1,7 @@
 
 import 'package:app_open/src/data/api/api_service.dart';
 import 'package:app_open/src/data/api/dio_client.dart';
-import 'package:app_open/src/data/repository/batch_repo.dart';
+import 'package:app_open/src/data/repository/home_repo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -19,7 +19,7 @@ class ServiceLocator {
     getIt.registerSingleton(ApiService(dioClient: getIt<DioClient>()));
 
     // Repos
-    getIt.registerSingleton(BatchRepo(getIt.get<ApiService>()));
+    getIt.registerSingleton(HomeRepo(getIt.get<ApiService>()));
 
     //More screen
     //getIt.registerSingleton(MoreNewContactRepo(getIt.get<ApiService>()));

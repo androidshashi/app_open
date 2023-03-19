@@ -72,6 +72,7 @@ class DioExceptions implements Exception {
       //     ErrorModel.fromJson(jsonDecode(e.response.toString()));
       // debugPrint(error.errorMessage.toString());
       // return error.errorMessage.toString();
+      return errorMessage;
     }
     return 'Not Found';
   }
