@@ -1,6 +1,7 @@
 
 import 'package:app_open/src/data/api/api_service.dart';
 import 'package:app_open/src/data/api/dio_client.dart';
+import 'package:app_open/src/data/repository/history_repo.dart';
 import 'package:app_open/src/data/repository/home_repo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
@@ -20,6 +21,7 @@ class ServiceLocator {
 
     // Repos
     getIt.registerSingleton(HomeRepo(getIt.get<ApiService>()));
+    getIt.registerSingleton(HistoryRepo(getIt.get<ApiService>()));
 
     //More screen
     //getIt.registerSingleton(MoreNewContactRepo(getIt.get<ApiService>()));

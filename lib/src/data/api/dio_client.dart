@@ -122,6 +122,8 @@ class Endpoints {
   //baseUrl
   static const String baseUrl = "https://appopen.me/api/";
 
+  static const String webUrl = "https://appopen.me";
+
   // receiveTimeout
   static const int receiveTimeout = 120 * 1000; // 120 sec
 
