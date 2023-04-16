@@ -28,9 +28,9 @@ class ViewHistoryButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             const Text(
-              StringConstants.viewHistory,
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
+              Text(
+              viewHistory,
+              style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
             ),
             SizedBox(
               width: 5.w,

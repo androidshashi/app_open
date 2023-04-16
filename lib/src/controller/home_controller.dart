@@ -2,7 +2,7 @@ import 'package:app_open/src/data/api/dio_client.dart';
 import 'package:app_open/src/data/api/service_locator.dart';
 import 'package:app_open/src/data/repository/history_repo.dart';
 import 'package:app_open/src/data/repository/home_repo.dart';
-import 'package:app_open/src/views/generated_screen.dart';
+import 'package:app_open/src/views/generated_screen/generated_screen.dart';
 import 'package:app_open/storage/history_model.dart';
 import 'package:app_open/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -21,26 +21,13 @@ class HomeController extends GetxController {
 
   var isLoading = false.obs;
 
-  ///--Get url list
-  void batch() async {
-    // isLoading.value = true;
-    // debugPrint("----------- Batch Controller : getBatchList ----------------");
-    // var response = await _homeRepo.getBatchList();
-    // response.fold((l) {
-    //   debugPrint(l);
-    // }, (model) {
-    //   isLoading.value = false;
-    //   debugPrint("Success");
-    // });
-  }
-
   ///-----------------------------------Validate text field url--------------------------
   String? validateInputUrl(String? value){
     if (value == null || value.isEmpty) {
-      return StringConstants.pleaseEnterYourUrl;
+      return pleaseEnterYourUrl;
     }
     if (!value.isURL) {
-      return StringConstants.pleaseEnterValidUrl;
+      return pleaseEnterValidUrl;
     }
     return null;
   }
@@ -54,10 +41,11 @@ class HomeController extends GetxController {
       Fluttertoast.showToast(msg: errorMsg);
       isLoading.value = false;
     }, (model) {
-      Fluttertoast.showToast(msg: StringConstants.linkGenerated);
+      Fluttertoast.showToast(msg: linkGenerated);
       debugPrint("Success");
       generatedUrl.value = "${Endpoints.webUrl}/${model.urlData?.type}/${model.urlData?.shortCode}";
       isLoading.value = false;
+      debugPrint("-------Added url:${generatedUrl.value}, type:${model.urlData?.type}");
       addHistory(HistoryModel(
         longUrl: model.urlData?.longUrl,
         hits: model.urlData?.hits?.toInt(),

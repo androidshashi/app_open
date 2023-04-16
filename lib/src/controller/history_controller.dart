@@ -1,8 +1,10 @@
 import 'package:app_open/src/data/api/dio_client.dart';
 import 'package:app_open/src/data/api/service_locator.dart';
+import 'package:app_open/src/data/model/shortcode_info_model.dart';
 import 'package:app_open/src/data/repository/history_repo.dart';
 import 'package:app_open/src/data/repository/home_repo.dart';
-import 'package:app_open/src/views/generated_screen.dart';
+import 'package:app_open/src/views/generated_screen/generated_screen.dart';
+import 'package:app_open/src/views/history/short_code_info.dart';
 import 'package:app_open/storage/history_model.dart';
 import 'package:app_open/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class HistoryController extends GetxController {
   Box? historyBox;
   RxBool isLoading = false.obs;
   RxList<dynamic> historyList = RxList();
+  Rx<ShortCodeInfoModel> shortCodeInfo = ShortCodeInfoModel().obs;
 
   ///--Get history list
 
@@ -55,6 +58,19 @@ class HistoryController extends GetxController {
     List? list = raw?.values.toList();
     debugPrint("-------------------History Count:${list?.length??0}");
     historyList.value = list!;
+  }
+
+  void getShortCodeInfo(String shortCode, String type) async{
+    isLoading(true);
+    var response = await _hisRepo.shortCodeInfo(shortCode, type);
+    response.fold((errorMessage) {
+      isLoading(false);
+      debugPrint(errorMessage);
+    }, (model) {
+      isLoading(false);
+      shortCodeInfo(model);
+      Get.to(()=>ShortCodeInfoScreen());
+    });
   }
 
 }

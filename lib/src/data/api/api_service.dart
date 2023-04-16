@@ -14,10 +14,9 @@ class ApiService {
     return response;
   }
 
-  Future urlList() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    String? userId = pref.getString("userId");
-    var response = dioClient.get('batch/list/$userId'); //replace 1 with userid
+  Future getShortCodeInfo({required String sc,required String type}) async {
+
+    var response = dioClient.get("${Endpoints.shortCodeInfo}?short_code=$sc&type=$type"); //replace 1 with userid
     log(response.toString());
     return response;
   }

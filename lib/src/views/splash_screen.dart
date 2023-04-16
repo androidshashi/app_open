@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:app_open/src/views/home_screen.dart';
+import 'package:app_open/src/views/home_screen/home_screen.dart';
+import 'package:app_open/utils/image_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,9 +30,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: Center(
-        child: Icon(Icons.person_2),
+        child: Image.asset(AppImages.appLogo),
       ),
     );
   }

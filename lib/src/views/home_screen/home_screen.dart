@@ -1,7 +1,9 @@
 import 'package:app_open/src/controller/home_controller.dart';
-import 'package:app_open/src/views/custom_widgets/top_bar_layout.dart';
+import 'package:app_open/src/views/custom_widgets/custom_appbar.dart';
 import 'package:app_open/src/views/custom_widgets/view_history_button.dart';
+import 'package:app_open/utils/extension_methods.dart';
 import 'package:app_open/utils/strings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppbar(),
       body: SafeArea(
         child: Container(
           color: Get.theme.primaryColorLight.withOpacity(0.5),
@@ -21,7 +24,6 @@ class HomeScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const TopBarLayout(),
                 SizedBox(
                   height: 20.h,
                 ),
@@ -49,7 +51,16 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 5.h,
                 ),
-                const ViewHistoryButton()
+                const ViewHistoryButton(),
+                ElevatedButton(
+                    onPressed: () async {
+                      var newLocale = const Locale('en');
+                      await context.setLocale(
+                          newLocale); // change `easy_localization` locale
+                      Get.updateLocale(
+                          newLocale); // change `Get` locale direction
+                    },
+                    child: const Text("Change Language"))
               ],
             ),
           ),
@@ -62,14 +73,15 @@ class HomeScreen extends StatelessWidget {
   Widget _totalLinksContainer(BuildContext context) {
     var decoration = BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(30.r),
-        border: Border.all(color: Get.theme.primaryColor.withAlpha(5), width: 0.5.w));
+        borderRadius: BorderRadius.circular(20.r),
+        border: Border.all(
+            color: Get.theme.primaryColor.withAlpha(5), width: 0.5.w));
     var numberTextStyle =
         const TextStyle(fontWeight: FontWeight.w700, fontSize: 30);
     var textStyle = const TextStyle(fontSize: 20);
     return Container(
       padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 10.w),
-      margin:  EdgeInsets.only(left: 20.w, right: 20.w),
+      margin: EdgeInsets.only(left: 20.w, right: 20.w),
       decoration: decoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +91,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               const Icon(Icons.link),
               Text(
-                StringConstants.totalLinks,
+                totalLinks,
                 style: textStyle,
               ),
             ],
@@ -109,12 +121,15 @@ class HomeScreen extends StatelessWidget {
           textInputAction: TextInputAction.go,
           decoration: InputDecoration(
             prefixIcon: const Icon(Icons.link),
-            suffixIcon:const Icon(Icons.paste),
-            hintText: StringConstants.enterYourUrlHere,
+            suffixIcon: InkWell(
+                onTap: () {
+                  _controller.urlInputEditingController.value.pasteText();
+                },
+                child: const Icon(Icons.paste)),
+            hintText: enterYourUrlHere,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.r),
-              borderSide:
-                   BorderSide(color: Get.theme.primaryColor, width: 0.3),
+              borderSide: BorderSide(color: Get.theme.primaryColor, width: 0.3),
             ),
           ),
         ),
@@ -150,19 +165,23 @@ class HomeScreen extends StatelessWidget {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    StringConstants.generateLink,
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                  Text(
+                    generateLink,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        fontSize: 20),
                   ),
                   SizedBox(
                     width: 5.w,
                   ),
-                  const Icon(Icons.arrow_circle_right_outlined)
+                  const Icon(
+                    Icons.arrow_circle_right_outlined,
+                    color: Colors.white,
+                  )
                 ],
               ),
       ),
     );
   }
-
-
 }

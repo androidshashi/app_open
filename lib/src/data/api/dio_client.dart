@@ -130,6 +130,7 @@ class Endpoints {
   // connectTimeout
   static const int connectionTimeout = 120 * 1000; // 120 sec
 
-  // Auth Endpoints
+  // Endpoints
   static const String createShort = "createShort";
+  static const String shortCodeInfo = "shortCodeDetails";
 }
