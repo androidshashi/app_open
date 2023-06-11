@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:app_open/src/data/api/api_service.dart';
 import 'package:app_open/src/data/api/dio_exceptions.dart';
+import 'package:app_open/src/data/model/app_promo_model.dart';
 import 'package:app_open/src/data/model/create_short_link_response_model.dart';
+import 'package:app_open/src/data/model/total_links_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
@@ -15,6 +17,28 @@ class HomeRepo {
     try {
       var response = await apiService.generateLink(url);
       CreateShortLinkResponseModel model = CreateShortLinkResponseModel.fromJson(jsonDecode(response.toString()));
+      return right(model);
+    } on DioError catch (e) {
+      var error = DioExceptions.handleError(e);
+      return left(error);
+    }
+  }
+
+  Future<Either<String, AppPromoModel>> getAppPromoData() async {
+    try {
+      var response = await apiService.getAppPromoData();
+      AppPromoModel model = appPromoModelFromJson(response.toString());
+      return right(model);
+    } on DioError catch (e) {
+      var error = DioExceptions.handleError(e);
+      return left(error);
+    }
+  }
+
+  Future<Either<String, TotalLinksResponseModel>> getTotalGeneratedLinks() async {
+    try {
+      var response = await apiService.getTotalGeneratedLinks();
+      TotalLinksResponseModel model = totalLinksResponseModelFromJson(response.toString());
       return right(model);
     } on DioError catch (e) {
       var error = DioExceptions.handleError(e);

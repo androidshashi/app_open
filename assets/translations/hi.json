@@ -1,7 +1,7 @@
 {
   "generateLink": "लिंक जनरेट करें",
   "openLinksDirectlyInApps": "सीधे ऐप्स में लिंक खोलें",
-  "totalLinks": "कुल लिंक",
+  "totalLinks": "कुल लिंक appopen.me पर बनाया गया",
   "totalClicks": "कुल क्लिक",
   "pleaseEnterYourUrl": "कृपया अपना यूआरएल दर्ज करें",
   "pleaseEnterValidUrl": "क्रुपया मान्य यूआरएल दर्ज करें",
@@ -11,5 +11,10 @@
   "yourShortUrls": "आपके यूआरएल",
   "noDataFound": "कोई डेटा नहीं",
   "copyToClipboard": "क्लिपबोर्ड पर कॉपी करें",
-  "urlInfo": "यूआरएल जानकारी"
+  "urlInfo": "यूआरएल जानकारी",
+  "changeLanguage": "भाषा बदलें",
+  "aboutMe": "इस ऐप के बारे में",
+  "privacyPolicy": "प्राइवेसी पॉलिसी",
+  "terms": "टर्म्स एंड कंडीशंस",
+  "share": "Share"
 }

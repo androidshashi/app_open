@@ -5,12 +5,21 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-void main() async{
+void main() async {
   ServiceLocator().setup();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  runApp(const MyApp());
+  await MobileAds.instance.initialize();
+  runApp(
+    EasyLocalization(
+        supportedLocales: [Locale('en'), Locale('hi')],
+        path: 'assets/translations',
+        // <-- change the path of the translation files
+        fallbackLocale: Locale('en'),
+        child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,38 +28,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return EasyLocalization(
-      supportedLocales: const [
-        Locale(
-            'en'
-        ),
-        Locale(
-            'en'
-        ),
-        Locale(
-            'hi'
-        ),
-      ],
-      fallbackLocale: const Locale('en'),
-      path: 'assets/translations',
-      child: ScreenUtilInit(
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: ((context, child) => GetMaterialApp(
-              title: 'App Open',
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-              theme: ThemeData(
-                primarySwatch: Colors.green,
-              ),
-              // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-              home: const SplashScreen(),
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: ((context, child) => GetMaterialApp(
+            title: 'App Open',
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: ThemeData(
+              primarySwatch: Colors.green,
+            ),
+            // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            home: const SplashScreen(),
 
-              debugShowCheckedModeBanner: false,
-            )),
-        designSize: const Size(375, 812),
-      ),
+            debugShowCheckedModeBanner: false,
+          )),
+      designSize: const Size(375, 812),
     );
   }
 }

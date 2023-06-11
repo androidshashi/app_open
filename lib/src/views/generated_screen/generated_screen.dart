@@ -1,10 +1,11 @@
 import 'package:app_open/src/controller/home_controller.dart';
-import 'package:app_open/src/views/custom_widgets/CopyTextButton.dart';
+import 'package:app_open/src/views/ad/banner_ad_widget.dart';
+import 'package:app_open/src/views/custom_widgets/custom_widgets.dart';
 import 'package:app_open/src/views/custom_widgets/custom_appbar.dart';
 import 'package:app_open/src/views/custom_widgets/view_history_button.dart';
 import 'package:app_open/theme/app_theme.dart';
 import 'package:app_open/utils/image_constants.dart';
-import 'package:app_open/utils/strings.dart';
+import 'package:app_open/utils/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,7 +34,8 @@ class GeneratedScreen extends StatelessWidget {
                   height: 5.h,
                 ),
                 CopyTextButton(text:_controller.generatedUrl.value),
-               const ViewHistoryButton()
+               const ViewHistoryButton(),
+                BannerAdWidget()
               ],
             ),
           ),

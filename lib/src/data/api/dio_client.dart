@@ -16,6 +16,10 @@ class DioClient {
       ..interceptors.add(
           PrettyDioLogger(requestBody: true, compact: true, request: true));
   }
+  updateBaseUrl( {String baseUrl=Endpoints.baseUrl})
+  {
+    _dio..options.baseUrl = baseUrl;
+  }
   //
   // Add methods...
   // Get:-----------------------------------------------------------------------
@@ -124,6 +128,9 @@ class Endpoints {
 
   static const String webUrl = "https://appopen.me";
 
+  static const String baseUrl2 = "https://earningdesire.com/apps-api/";
+
+
   // receiveTimeout
   static const int receiveTimeout = 120 * 1000; // 120 sec
 
@@ -133,4 +140,6 @@ class Endpoints {
   // Endpoints
   static const String createShort = "createShort";
   static const String shortCodeInfo = "shortCodeDetails";
+  static const String getTotalLinks = "getTotalLinks";
+  static const String appPromoData = "app-data-4-keyword-tool.php";
 }

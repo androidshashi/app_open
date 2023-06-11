@@ -4,9 +4,9 @@ import 'package:app_open/src/data/model/shortcode_info_model.dart';
 import 'package:app_open/src/data/repository/history_repo.dart';
 import 'package:app_open/src/data/repository/home_repo.dart';
 import 'package:app_open/src/views/generated_screen/generated_screen.dart';
-import 'package:app_open/src/views/history/short_code_info.dart';
+import 'package:app_open/src/views/history/short_code_info_screen.dart';
 import 'package:app_open/storage/history_model.dart';
-import 'package:app_open/utils/strings.dart';
+import 'package:app_open/utils/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -23,6 +23,7 @@ class HistoryController extends GetxController {
   RxList<dynamic> historyList = RxList();
   Rx<ShortCodeInfoModel> shortCodeInfo = ShortCodeInfoModel().obs;
 
+
   ///--Get history list
 
   @override
@@ -31,6 +32,17 @@ class HistoryController extends GetxController {
     initHive();
 
     super.onInit();
+  }
+
+  ///-----------------------------------Validate text field url--------------------------
+  String? validateInputUrl(String? value) {
+    if (value == null || value.isEmpty) {
+      return AppLocalization.pleaseEnterYourUrl;
+    }
+    if (!value.isURL) {
+      return AppLocalization.pleaseEnterValidUrl;
+    }
+    return null;
   }
 
   ///-------------------------init hive---------------------------------
@@ -55,7 +67,7 @@ class HistoryController extends GetxController {
   ///-----------------------------get all data from history box-----------------------
   void getHistory(){
     Map<dynamic, dynamic>? raw = historyBox?.toMap();
-    List? list = raw?.values.toList();
+    List? list = raw?.values.toList().reversed.toList();
     debugPrint("-------------------History Count:${list?.length??0}");
     historyList.value = list!;
   }

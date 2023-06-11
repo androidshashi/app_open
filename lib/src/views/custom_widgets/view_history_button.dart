@@ -1,11 +1,11 @@
-import 'package:app_open/src/views/history/history_view.dart';
-import 'package:app_open/utils/strings.dart';
+import 'package:app_open/src/views/history/history_screen.dart';
+import 'package:app_open/utils/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ViewHistoryButton extends StatelessWidget {
-  const ViewHistoryButton({Key? key }) : super(key: key);
+  const ViewHistoryButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,14 @@ class ViewHistoryButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: InkWell(
-        onTap: (){
-          Get.to(()=>HistoryView());
+        onTap: () {
+          Get.to(() => HistoryScreen());
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-              Text(
-              viewHistory,
+            Text(
+              AppLocalization.viewHistory,
               style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
             ),
             SizedBox(
