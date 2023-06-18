@@ -110,12 +110,12 @@ Widget customButton(
                 fontSize: 20),
           ),
           SizedBox(
-            width: 5.w,
+            width: iconData!=null?5.w:0,
           ),
-           Icon(
+          iconData!=null? Icon(
            iconData,
             color: Colors.white,
-          )
+          ):SizedBox()
         ],
       ),
     ),

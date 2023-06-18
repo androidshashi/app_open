@@ -42,7 +42,7 @@ class MainActivity: FlutterActivity() , MethodChannel.MethodCallHandler {
         try {
             val intent = Intent(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-            intent.putExtra(Intent.EXTRA_SUBJECT, "$name-${"Sudoku ME"}")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "$name-${"AppOpen"}")
             intent.putExtra(Intent.EXTRA_TEXT, message)
             intent.type = "text/html"
             intent.setPackage("com.google.android.gm")
@@ -55,7 +55,7 @@ class MainActivity: FlutterActivity() , MethodChannel.MethodCallHandler {
 
             val emailIntent = Intent(Intent.ACTION_SEND)
             emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "$name-${"Sudoku ME"}")
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "$name-${" (AppOpen)"}")
             emailIntent.putExtra(Intent.EXTRA_TEXT, message)
             emailIntent.selector = selectorIntent
 

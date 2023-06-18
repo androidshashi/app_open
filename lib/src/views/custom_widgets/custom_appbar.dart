@@ -14,7 +14,7 @@ AppBar customAppbar({String? text}) {
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(text ?? AppLocalization.openLinksDirectlyInApps),
+        Expanded(child: Text(text ?? AppLocalization.openLinksDirectlyInApps)),
         Row(
           children: [
             Padding(

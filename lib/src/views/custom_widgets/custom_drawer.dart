@@ -83,6 +83,12 @@ Drawer getDrawer() {
             Get.to(()=> ContactUsScreen());
           }),
       getDrawerItem(
+          title: AppLocalization.contactUS,
+          onTap: () {
+            Get.back();
+            Get.to(()=> ContactUsScreen());
+          }),
+      getDrawerItem(
           title: AppLocalization.rateUs,
           onTap: () async {
             Get.back();

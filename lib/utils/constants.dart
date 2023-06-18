@@ -5,6 +5,7 @@ const String KEY_TYPE_WEB = "web";
 const String APPOPEN_URL = "https://appopen.me/";
 const String KEY_TYPE_YT = "yt";
 const String KEY_TYPE_IG = "ig";
+const String HOW_IT_WORKS_URL = "https://earningdesire.com/how-to-gain-subscribers-using-appopen-me/";
 const String PRIVACY_POLICY_URL = "https://sites.google.com/view/appopen-me/";
 const String TNC_URL = "https://sites.google.com/view/appopen-me/tnc";
 const String ABOUT_URL = "https://appopen.me/about";

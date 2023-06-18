@@ -43,6 +43,7 @@ class AppLocalization{
   static String keywordToolForYoutube="keywordToolForYoutube".tr();
 
   static String appNotWorking = "appNotWorking".tr();
+  static String howItWorks = "howItWorks".tr();
 
   static String helpAndFeedback = "helpAndFeedback".tr();
 

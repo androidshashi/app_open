@@ -39,7 +39,7 @@ class ContactUsScreen extends StatelessWidget {
                       title: AppLocalization.submit,
                     ),
                     SizedBox(height: 10.h,),
-                    Container(color:Colors.red.shade100, padding: EdgeInsets.all(8.h), child: Text("We will reply to your message within 8 working hours. So, please have patience. Thanks for using appopen.me", style: TextStyle(color: Colors.black54),)),
+                    Container(color:Colors.red.shade100, padding: EdgeInsets.all(8.h), child: Text("We will reply to your message within 8 working hours. So, please have patience. Thanks for using appopen.me", style: TextStyle(color: Colors.black54,fontSize: 10.sp),)),
                     SizedBox(height: 10.h,),
                     Container(color:Colors.white54, alignment: Alignment.center, width:double.infinity, padding: EdgeInsets.all(10.h), child: Text("Meanwhile use our web tool".toUpperCase(), style: TextStyle(color: Colors.black54, fontSize: 20.sp),)),
                     SizedBox(height: 10.h,),
